@@ -1,0 +1,50 @@
+definitions:
+  golang-subscriptions-api_internal_model.Subscription:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /subscriptions:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/golang-subscriptions-api_internal_model.Subscription'
+            type: array
+      summary: Получить список подписок
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Подписка
+        in: body
+        name: subscription
+        required: true
+        schema:
+          $ref: '#/definitions/golang-subscriptions-api_internal_model.Subscription'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: bad request
+          schema:
+            type: string
+      summary: Создать подписку
+swagger: "2.0"
