@@ -26,7 +26,6 @@ func main() {
 		log.Fatalf("failed to run migrations: %v", err)
 	}
 
-	// Создаём репозиторий, сервис и хендлер
 	repo := repository.NewRepository(db)
 	svc := service.NewService(repo)
 	h := handler.NewHandler(svc)

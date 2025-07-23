@@ -36,7 +36,6 @@ func NewHandler(svc *service.Service) *Handler {
 func (h *Handler) Create(c *gin.Context) {
 	var input model.Subscription
 
-	// Привязка JSON к структуре
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid input: " + err.Error()})
 		return

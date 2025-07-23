@@ -31,7 +31,6 @@ func InitDB(cfg *config.Config) (*gorm.DB, error) {
 }
 
 func RunMigrations(db *gorm.DB) error {
-	// Важно чтобы расширение для UUID было
 	err := db.Exec(`CREATE EXTENSION IF NOT EXISTS "uuid-ossp";`).Error
 	if err != nil {
 		return err

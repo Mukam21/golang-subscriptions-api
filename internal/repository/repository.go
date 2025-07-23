@@ -43,7 +43,6 @@ func (r *Repository) Delete(id string) error {
 	return r.db.Delete(&model.Subscription{}, "id = ?", id).Error
 }
 
-// SumPrice calculates total price by filters
 func (r *Repository) SumPrice(userID, serviceName string, from, to *time.Time) (int64, error) {
 	query := r.db.Model(&model.Subscription{}).Select("COALESCE(SUM(price),0)")
 
